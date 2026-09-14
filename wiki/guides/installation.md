@@ -24,6 +24,41 @@
 | Docker Compose | v2+ | Included with Docker |
 | Git | 2.0+ | `sudo apt install git` |
 
+---
+
+## 🚀 Quick Start (One Command)
+
+```bash
+# Clone and start
+git clone https://github.com/marktantongco/turnstile-solver.git
+cd turnstile-solver
+sudo docker compose -f docker-compose.override.yml up -d
+
+# Verify
+curl -H "secret: turnstile123" http://localhost:8088/
+```
+
+---
+
+## 🔄 Proxy Refresh (Do This First!)
+
+> **⚠️ IMPORTANT: Free proxies die fast. Refresh before each use.**
+
+```bash
+# Auto-refresh: fetch fresh SOCKS5 proxies
+./refresh-proxies.sh
+```
+
+### 📊 Proxy Sources Matrix
+
+| Source | Stars | Update Freq | Reliability | Protocol |
+|--------|-------|-------------|-------------|----------|
+| `monosans/proxy-list` | ⭐⭐⭐⭐ | Hourly | 🟢 High | SOCKS5 |
+| `VPSLabCloud/VPSLab-Free-Proxy-List` | ⭐⭐⭐ | 15 min | 🟢 High | SOCKS5 |
+| `proxifly/free-proxy-list` | ⭐⭐⭐⭐⭐ | 5 min | 🟡 Medium | SOCKS5 |
+
+---
+
 ## Installation Methods
 
 ### Method 1: Docker (Recommended)
@@ -192,6 +227,66 @@ services:
 - [ ] Test solve works
 - [ ] Systemd service enabled (if using)
 - [ ] Firewall configured
+
+---
+
+## 🔗 Ecosystem Links
+
+### Core Stack
+
+| Repository | Description | Status |
+|------------|-------------|--------|
+| [ai-gateway-complete](https://github.com/marktantongco/ai-gateway-complete) | Full-stack combined repo | ✅ Active |
+| [ai-gateway-stack](https://github.com/marktantongco/ai-gateway-stack) | Meta-repo linking all components | ✅ Active |
+
+### Individual Components
+
+| Repository | Language | Description |
+|------------|----------|-------------|
+| [blacklisted-ai-proxy](https://github.com/marktantongco/blacklisted-ai-proxy) | Node.js | Web UI + API gateway |
+| [grokbuild-proxy](https://github.com/marktantongco/grokbuild-proxy) | Go | Grok API proxy + multi-account |
+| [turnstile-solver](https://github.com/marktantongco/turnstile-solver) | Python | Cloudflare Turnstile solver |
+| [grok-register](https://github.com/marktantongco/grok-register) | Python | Account registration + OAuth |
+
+### Infrastructure
+
+| Repository | Language | Description |
+|------------|----------|-------------|
+| [thermoptic](https://github.com/marktantongco/thermoptic) | Python | Shared egress proxy (MITM) |
+| [phantomsignal](https://github.com/marktantongco/phantomsignal) | Python | Analytics + monitoring |
+| [workstation-backup](https://github.com/marktantongco/workstation-backup) | Shell | Full ecosystem backup |
+
+---
+
+## 🌳 Worktree Structure
+
+```
+/home/x3/workspace/
+├── ai-gateway-complete/          # Main combined repo
+│   ├── components/
+│   │   ├── blacklisted-ai-proxy/
+│   │   ├── grokbuild-proxy/
+│   │   ├── turnstile-solver/
+│   │   └── grok-register/
+│   ├── config/
+│   ├── scripts/
+│   └── docs/
+├── ai-gateway-stack/             # Meta-repo
+├── BlacklistedAIProxy/           # Standalone
+├── grokbuild-proxy/              # Standalone
+├── turnstile_solver/             # Standalone
+├── grok-register/                # Standalone
+├── Thermoptic/                   # Standalone
+└── workstation-backup/           # Backup repo
+```
+
+---
+
+## 🔗 Related Links
+
+- [Full Documentation](https://github.com/marktantongco/ai-gateway-complete/tree/main/docs)
+- [API Reference](../api/reference.md)
+- [Troubleshooting](../troubleshooting/common-issues.md)
 - [ ] Default secret changed
 
 ## 🆘 Next Steps
