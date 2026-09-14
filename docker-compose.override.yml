@@ -1,0 +1,35 @@
+services:
+  turnstile-solver:
+    container_name: turnstile-solver
+    hostname: turnstile-solver
+    build:
+      context: .
+      dockerfile: docker/solver-light.Dockerfile
+      platforms:
+        - linux/amd64
+    restart: unless-stopped
+    ports:
+      - "${SOLVER_PORT:-8088}:8088"
+    volumes:
+      - ./proxies.txt:/app/proxies.txt:ro
+    environment:
+      - SOLVER_PORT=8088
+      - SOLVER_SECRET=${SOLVER_SECRET:-turnstile123}
+      - MAX_ATTEMPTS=${MAX_ATTEMPTS:-3}
+      - CAPTCHA_TIMEOUT=${CAPTCHA_TIMEOUT:-30}
+      - PAGE_LOAD_TIMEOUT=${PAGE_LOAD_TIMEOUT:-30}
+      - PROXY_SERVER=${PROXY_SERVER:-}
+      - PROXY_FILE=/app/proxies.txt
+      - LOG_LEVEL=${LOG_LEVEL:-20}
+    networks:
+      - solver-net
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2"
+    shm_size: '1gb'
+
+networks:
+  solver-net:
+    driver: bridge
