@@ -171,3 +171,16 @@ curl -s https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks
 - [Installation Guide](installation.md)
 - [API Reference](../api/reference.md)
 - [Troubleshooting](../troubleshooting/common-issues.md)
+
+---
+
+## 🔗 Ecosystem Links
+
+| Component | Description | Port |
+|-----------|-------------|------|
+| [BlacklistedAIProxy](https://github.com/marktantongco/blacklisted-ai-proxy) | Web UI + API gateway | 3005 |
+| [GrokBuild Proxy](https://github.com/marktantongco/grokbuild-proxy) | Grok API proxy + multi-account | 8090 |
+| [Turnstile Solver](https://github.com/marktantongco/turnstile-solver) | This component | 8088 |
+| [Grok Register](https://github.com/marktantongco/grok-register) | Account registration + OAuth | - |
+| [Thermoptic](https://github.com/marktantongco/thermoptic) | Shared egress proxy (MITM) | 1234 |
+| [AI Gateway Complete](https://github.com/marktantongco/ai-gateway-complete) | Full-stack combined repo | - |
